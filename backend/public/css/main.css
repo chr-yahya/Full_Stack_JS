@@ -108,6 +108,31 @@ nav a:focus-visible {
     font-weight: 700;
 }
 
+.choice-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.choice-button {
+    min-width: 110px;
+    padding: 12px 18px;
+    border-radius: 4px;
+    background: #5d6872;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.choice-button:hover,
+.choice-button:focus-visible {
+    background: #48535c;
+    transform: translateY(-2px);
+    outline: none;
+}
+
 footer {
     min-height: 51px;
     display: flex;

@@ -3,6 +3,8 @@ const app = express();
 const path = require('path');
 const homeRouter = require('./routes/homeRouter');
 const aboutRouter = require('./routes/aboutRouter');
+const researchRouter = require('./routes/researchRouter');
+const teachingRouter = require('./routes/teachingRouter');
 app.use(express.static(path.join(__dirname,'public')));
 app.use((req,res,next)=>{
     const now = new Date().toDateString();
@@ -15,11 +17,15 @@ const expressLayouts = require('express-ejs-layouts');
 app.use(expressLayouts);
 app.set('layout', '../views/layouts/layout'); // Définition du layout par défaut
 
-app.use('/', homeRouter);
+
+app.use("/", homeRouter);
 app.use('/about', aboutRouter);
+app.use("/research", researchRouter);
+app.use('/teaching', teachingRouter);
 
-app.get('/*path',(req,res)=>{
-    res.redirect('/');
+// ATTENTION : utiliser app.get('/*splat', ...) pour EXPRESS 5
+app.get('/*path', (req, res) => { 
+    res.redirect('/')
 });
-
+ 
 module.exports = app;
