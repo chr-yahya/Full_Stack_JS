@@ -1,11 +1,5 @@
-
-<h1>Ceci est ma première page en EJS</h1>
-<%if (typeof user.nickname == 'undefined' && user.sex=='F')  { %>
-    <p>Bonjour bel(le) inconnu(e) !</p>
-<% } else if (typeof user.nickname == 'undefined' && user.sex=='M') { %>
-    <p>Bonjour bel inconnu !</p>
-<% } else if (typeof user.nickname !== 'undefined' && user.sex=='F') { %>
-    <p>Bonjour Mme <%= user.nickname %> !</p>
-<% } else if (typeof user.nickname !== 'undefined' && user.sex=='M') { %>
-    <p>Bonjour Mr <%= user.nickname %> !</p>
-<% } %>
+<div class="page-label">&gt; Accueil</div>
+<main class="page-main">
+    <h1>Bienvenue sur Démo Routage Express</h1>
+    <img src="/routing.png" alt="Illustration du routage Express" width="260">
+</main>

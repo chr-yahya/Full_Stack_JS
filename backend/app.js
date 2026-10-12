@@ -1,19 +1,8 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-//app.use((req,res,next)=>{
-//    const now =new Date().toDateString();
-//    console.log(`${now} : une requête ${req.method} est arrivée !`);
-//    next();
-//});
-//app.use((req, res, next) => {
-//    res.statusCode =200;
-//    res.setHeader('Content-Type','text/html;charset=utf-8');
-//    next();
-//});
-//app.use((req,res)=>{
-//    res.sendFile(path.join(__dirname,'/public/pages/index.html'));
-//});
+const homeRouter = require('./routes/homeRouter');
+const aboutRouter = require('./routes/aboutRouter');
 app.use(express.static(path.join(__dirname,'public')));
 app.use((req,res,next)=>{
     const now = new Date().toDateString();
@@ -25,7 +14,12 @@ app.set('views', path.join(__dirname, 'views')); // Déclaration du dossier cont
 const expressLayouts = require('express-ejs-layouts');
 app.use(expressLayouts);
 app.set('layout', '../views/layouts/layout'); // Définition du layout par défaut
-app.use((req, res) => {
-    res.render('pages/home',{user:{nickname:"yahya",sex:"F"}});
+
+app.use('/', homeRouter);
+app.use('/about', aboutRouter);
+
+app.get('/*path',(req,res)=>{
+    res.redirect('/');
 });
+
 module.exports = app;
