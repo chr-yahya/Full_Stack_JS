@@ -1,20 +1,18 @@
 const express = require('express');
 const router = express.Router();
+const {
+    teaching,
+    node,
+    expressPage,
+    php
+} = require('../controllers/teachingController');
 
-router.get('/node', (req, res) => {
-    res.render('pages/node');
-});
+router.get('/node', node);
 
-router.get('/express', (req, res) => {
-    res.render('pages/express');
-});
+router.get('/express', expressPage);
 
-router.get('/php', (req, res) => {
-    res.render('pages/php');
-});
+router.get('/php', php);
 
-router.get('/', (req, res) => {
-    res.render('pages/teaching');
-});
+router.get('/', teaching);
 
 module.exports = router;
