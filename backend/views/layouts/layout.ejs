@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test Express EJS Layouts</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<%-include('../partials/header')%>
+
+<div id="content">
+    <div class="scrollable">
+        <%- body %>
+    </div>
+</div>
+
+<%-include('../partials/footer')%>
+
+</body>
+</html>

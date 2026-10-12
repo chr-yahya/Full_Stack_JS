@@ -1,0 +1,11 @@
+
+<h1>Ceci est ma première page en EJS</h1>
+<%if (typeof user.nickname == 'undefined' && user.sex=='F')  { %>
+    <p>Bonjour bel(le) inconnu(e) !</p>
+<% } else if (typeof user.nickname == 'undefined' && user.sex=='M') { %>
+    <p>Bonjour bel inconnu !</p>
+<% } else if (typeof user.nickname !== 'undefined' && user.sex=='F') { %>
+    <p>Bonjour Mme <%= user.nickname %> !</p>
+<% } else if (typeof user.nickname !== 'undefined' && user.sex=='M') { %>
+    <p>Bonjour Mr <%= user.nickname %> !</p>
+<% } %>
