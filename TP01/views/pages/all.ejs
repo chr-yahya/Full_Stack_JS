@@ -1,0 +1,9 @@
+<div class="page-label">&gt; Toutes les blagues</div>
+<main class="page-main jokes-page">
+    <h1>Dad's Jokes</h1>
+    <% jokesList.forEach((joke) => { %>
+        <div class="joke">
+            <p><%= joke.joke %></p>
+        </div>
+    <% }); %>
+</main>
