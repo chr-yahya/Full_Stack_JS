@@ -10,16 +10,13 @@ app.use((req,res,next)=>{
     next();
 });
 app.set('view engine', 'ejs'); // Définition du moteur de rendu 
-app.set('views', path.join(__dirname, 'views')); // Déclaration du dossier contenant les vues
+app.set('views', path.join(__dirname, 'views'));
 const expressLayouts = require('express-ejs-layouts');
 app.use(expressLayouts);
-app.set('layout', '../views/layouts/layout'); // Définition du layout par défaut
-
-
+app.set('layout', '../views/layouts/layout'); 
 app.use('/', allRouter);
 app.use('/random', randomRouter);
 
-// ATTENTION : utiliser app.get('/*splat', ...) pour EXPRESS 5
 app.get('/*path', (req, res) => { 
     res.redirect('/')
 });
