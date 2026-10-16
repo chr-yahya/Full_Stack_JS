@@ -1,0 +1,13 @@
+<div class="page-label">&gt; Toutes les blagues</div>
+<main class="page-main jokes-page">
+    <h1>Dad's Jokes</h1>
+    <form class="joke-form" action="/jokes" method="POST">
+    <% jokesList.forEach((joke) => { %>
+        <div class="joke">
+            <p><button type="submit" name="jokeId" value="<%= joke.id %>">
+    <%= joke.joke %>
+</button><p>
+        </div>
+    <% }); %>
+    </form>
+</main>
