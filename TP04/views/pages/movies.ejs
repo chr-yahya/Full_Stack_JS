@@ -1,0 +1,43 @@
+<div class="page-label">&gt; Films</div>
+<main class="page-main movies-page">
+    <h1>Best Old Movies</h1>
+
+    <section class="movie-grid">
+        <% if (typeof selected === 'undefined' || !selected) { %>
+            <% movies.forEach((movie) => { %>
+                <article class="movie-card">
+                    <form action="/movies/read" method="GET">
+                        <img
+                            class="movie-card-image"
+                            src="<%= movie.image %>"
+                            alt="Affiche du film <%= movie.title %>">
+                        <div class="movie-card-content">
+                            <h2><%= movie.title %></h2>
+                            <button type="submit" name="movieId" value="<%= movie.id %>">More...</button>
+                        </div>
+                    </form>
+                </article>
+            <% }); %>
+        <% } else { %>
+            <article class="movie-card">
+                <img
+                    class="movie-card-image"
+                    src="<%= selected.image %>"
+                    alt="Affiche du film <%= selected.title %>">
+                <div class="movie-card-content">
+                    <h2><%= selected.title %></h2>
+                    <p><%= selected.synopsis %></p>
+                    <form action="/form" method="GET">
+                        
+                            <button type="submit" name="movieId" value="<%= selected.id %>">Edit</button>
+                    </form>
+                    <form action="/movies/delete" method="GET">
+                        
+                            <button type="submit" name="movieId" value="<%= selected.id %>">Delete</button>
+                    </form>
+                </div>
+            </article>
+        <% } %>
+
+    </section>
+</main>

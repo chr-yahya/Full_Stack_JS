@@ -1,0 +1,52 @@
+<% const isEdit = typeof movie !== 'undefined' && movie; %>
+
+<div class="page-label">&gt; <%= isEdit ? 'Modifier un film' : 'Créer un film' %></div>
+
+<main class="page-main form-page">
+    <h1><%= isEdit ? 'Modifier le film' : 'Créer un film' %></h1>
+
+    <form
+        class="movie-form"
+        action="<%= isEdit ? '/movies/update/' + movie._id : '/movies/create' %>"
+        method="POST"
+        enctype="multipart/form-data">
+
+        <div class="form-field">
+            <label for="title">Titre du film</label>
+            <input
+                type="text"
+                id="title"
+                name="title"
+                value="<%= isEdit ? movie.title : '' %>"
+                required>
+        </div>
+
+        <div class="form-field">
+            <label for="synopsis">Synopsis</label>
+            <textarea
+                id="synopsis"
+                name="synopsis"
+                rows="8"
+                required><%= isEdit ? movie.synopsis : '' %></textarea>
+        </div>
+
+        <div class="form-field">
+            <label for="image">Affiche</label>
+            <% if (isEdit && movie.image) { %>
+                <div class="image-preview">
+                    <img src="<%= movie.image %>" alt="Affiche actuelle de <%= movie.title %>">
+                </div>
+            <% } %>
+            <input
+                type="file"
+                id="image"
+                name="image"
+                accept="image/*">
+        </div>
+
+        <div class="form-actions">
+            <button type="submit">Save</button>
+            <a href="/movies">Cancel</a>
+        </div>
+    </form>
+</main>

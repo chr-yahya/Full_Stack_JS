@@ -1,0 +1,11 @@
+<div class="page-label">&gt; Films</div>
+<main class="page-main jokes-page">
+    <h1>Liste des films</h1>
+
+    <% movies.forEach((movie) => { %>
+        <article class="joke">
+            <h2><%= movie.title %></h2>
+            <p><%= movie.synopsis %></p>
+        </article>
+    <% }); %>
+</main>
